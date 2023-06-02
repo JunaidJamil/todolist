@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="inpt">
+    <button onclick="Add()">Add</button>
+    <div id="main">
+      <ul id="lis"></ul>
+    </div>
+  
+    <script>
+      let inp = document.getElementById('inpt');
+  
+      function Add() {
+        let main = document.getElementById('main');
+        let now = document.createElement('li');
+  
+        let fact = document.createTextNode(inp.value);
+  
+        let btn_del = document.createElement('button');
+       
+        btn_del.textContent = 'DEL';
+       
+        btn_del.onclick = function() {
+          remove(now);
+        };
+  
+        let btn_ed = document.createElement('button');
+        btn_ed.textContent = 'EDIT';
+        btn_ed.onclick = function() {
+          edit(now);
+        };
+  
+        now.appendChild(fact);
+        now.appendChild(btn_ed);
+        now.appendChild(btn_del);
+        main.appendChild(now);
+  
+        inp.value = "";
+      }
+  
+      function remove(element) {
+        element.parentNode.removeChild(element);
+      }
+  
+      function edit(element) {
+        let text = element.firstChild.textContent;
+        let newText = prompt('Enter new text', text);
+        if (newText !== null && newText.trim() !== "") {
+          element.firstChild.textContent = newText;
+        }
+      }
+    </script>
+  </body>
+  
+</html>
